@@ -7,7 +7,7 @@ public class MenuView : MonoBehaviour
 
     [SerializeField] private GameObject _menu;
 
-    private void Start()
+    private void Awake()
     {
         GameManager.ShowMenu += OnShowMenu;
     }
