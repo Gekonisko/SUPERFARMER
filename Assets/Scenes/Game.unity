@@ -292,9 +292,9 @@ RectTransform:
   - {fileID: 1556959599}
   m_Father: {fileID: 1030623409}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 50, y: -250}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 300, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &188602517
@@ -1157,7 +1157,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7511e8d4f7cdb234ebdc2792c5c01377, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _dices: {fileID: 609861475}
+  _dices: {fileID: 1827256016}
+  _nextButton: {fileID: 798695806}
 --- !u!1 &582994616
 GameObject:
   m_ObjectHideFlags: 0
@@ -1326,9 +1327,9 @@ RectTransform:
   - {fileID: 940064746}
   m_Father: {fileID: 1827256017}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 300, y: -100}
   m_SizeDelta: {x: 600, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &609861477
@@ -1674,9 +1675,9 @@ RectTransform:
   - {fileID: 582994617}
   m_Father: {fileID: 1030623409}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 50, y: -420}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 300, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &732157459
@@ -1820,9 +1821,9 @@ RectTransform:
   - {fileID: 1567510819}
   m_Father: {fileID: 1827256017}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 300, y: -350}
   m_SizeDelta: {x: 250, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &798695806
@@ -1864,7 +1865,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 798695807}
   m_OnClick:
     m_PersistentCalls:
@@ -1931,6 +1932,50 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f8e94563863b6241b3c997d23caec8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &850703903
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 850703904}
+  - component: {fileID: 850703905}
+  m_Layer: 0
+  m_Name: Farm Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &850703904
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 850703903}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1669496354}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &850703905
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 850703903}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ae8919952917e54aab0229389eeef4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &879152603
 GameObject:
   m_ObjectHideFlags: 0
@@ -1941,6 +1986,7 @@ GameObject:
   m_Component:
   - component: {fileID: 879152604}
   - component: {fileID: 879152605}
+  - component: {fileID: 879152606}
   m_Layer: 5
   m_Name: horse
   m_TagString: Untagged
@@ -1995,6 +2041,20 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &879152606
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 879152603}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46659e790852054438762329d3e7764a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 4
+  text: {fileID: 945758888}
 --- !u!1 &891649427
 GameObject:
   m_ObjectHideFlags: 0
@@ -2102,9 +2162,9 @@ RectTransform:
   - {fileID: 2137697779}
   m_Father: {fileID: 609861476}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 475, y: -100}
   m_SizeDelta: {x: 250, y: 250}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &940064747
@@ -2264,6 +2324,7 @@ GameObject:
   m_Component:
   - component: {fileID: 970079726}
   - component: {fileID: 970079727}
+  - component: {fileID: 970079728}
   m_Layer: 5
   m_Name: rabbit
   m_TagString: Untagged
@@ -2318,6 +2379,20 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &970079728
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 970079725}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46659e790852054438762329d3e7764a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 0
+  text: {fileID: 704979959}
 --- !u!1 &1030623408
 GameObject:
   m_ObjectHideFlags: 0
@@ -2335,7 +2410,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1030623409
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2571,6 +2646,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8b5882cb118e344094603b604387b4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dices: 2
 --- !u!4 &1081047540
 Transform:
   m_ObjectHideFlags: 0
@@ -2730,6 +2806,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1198078956}
   - component: {fileID: 1198078957}
+  - component: {fileID: 1198078958}
   m_Layer: 5
   m_Name: cow
   m_TagString: Untagged
@@ -2784,6 +2861,20 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &1198078958
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1198078955}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46659e790852054438762329d3e7764a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 3
+  text: {fileID: 397258676}
 --- !u!1 &1209036563
 GameObject:
   m_ObjectHideFlags: 0
@@ -3188,6 +3279,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1498367210}
   - component: {fileID: 1498367211}
+  - component: {fileID: 1498367212}
   m_Layer: 5
   m_Name: small dog
   m_TagString: Untagged
@@ -3242,6 +3334,20 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &1498367212
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1498367209}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46659e790852054438762329d3e7764a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 5
+  text: {fileID: 115170529}
 --- !u!1 &1538448687
 GameObject:
   m_ObjectHideFlags: 0
@@ -3553,6 +3659,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1579235983}
   - component: {fileID: 1579235984}
+  - component: {fileID: 1579235985}
   m_Layer: 5
   m_Name: pig
   m_TagString: Untagged
@@ -3607,6 +3714,20 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &1579235985
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1579235982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46659e790852054438762329d3e7764a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 2
+  text: {fileID: 1164132042}
 --- !u!1 &1594946579
 GameObject:
   m_ObjectHideFlags: 0
@@ -3829,6 +3950,7 @@ Transform:
   m_Children:
   - {fileID: 1081047540}
   - {fileID: 2055811105}
+  - {fileID: 850703904}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1747050383
@@ -3941,9 +4063,9 @@ RectTransform:
   - {fileID: 715148571}
   m_Father: {fileID: 1030623409}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 50, y: -80}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 300, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1788857344
@@ -4068,7 +4190,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1827256017
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4194,6 +4316,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1938971755}
   - component: {fileID: 1938971756}
+  - component: {fileID: 1938971757}
   m_Layer: 5
   m_Name: big dog
   m_TagString: Untagged
@@ -4248,6 +4371,20 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &1938971757
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1938971754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46659e790852054438762329d3e7764a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 6
+  text: {fileID: 550359420}
 --- !u!1 &2015902313
 GameObject:
   m_ObjectHideFlags: 0
@@ -4358,9 +4495,9 @@ RectTransform:
   - {fileID: 1594946580}
   m_Father: {fileID: 609861476}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 125, y: -100}
   m_SizeDelta: {x: 250, y: 250}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2051164121
@@ -4432,6 +4569,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2099741590}
   - component: {fileID: 2099741591}
+  - component: {fileID: 2099741592}
   m_Layer: 5
   m_Name: sheep
   m_TagString: Untagged
@@ -4486,6 +4624,20 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &2099741592
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2099741589}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46659e790852054438762329d3e7764a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 1
+  text: {fileID: 1343878340}
 --- !u!1 &2137697778
 GameObject:
   m_ObjectHideFlags: 0
