@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,14 +10,22 @@ public class DiceRollerView : MonoBehaviour
 
     private void Awake()
     {
-        GameManager.ShowDiceRoller += OnShowDiceRoller;
+        GameManager.ActiveGameCanvas += OnChangeGameCanvas;
         DiceView.RollDice += OnRollDice;
     }
 
-    private void OnShowDiceRoller(bool isActive)
+    private void OnChangeGameCanvas(GameCanvases canvas)
     {
-        _dices.SetActive(isActive);
-        _nextButton.interactable = false;
+        if (canvas == GameCanvases.DiceRoller)
+        {
+            _dices.SetActive(true);
+            _nextButton.interactable = false;
+        }
+        else
+        {
+            _dices.SetActive(false);
+        }
+
     }
 
     private void OnRollDice(Animal animal)
@@ -34,7 +40,7 @@ public class DiceRollerView : MonoBehaviour
 
     private void OnDestroy()
     {
-        GameManager.ShowDiceRoller -= OnShowDiceRoller;
+        GameManager.ActiveGameCanvas -= OnChangeGameCanvas;
         DiceView.RollDice -= OnRollDice;
     }
 

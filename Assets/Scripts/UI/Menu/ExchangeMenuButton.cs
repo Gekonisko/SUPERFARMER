@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class ExchangeButton : MonoBehaviour
+public class ExchangeMenuButton : MonoBehaviour
 {
     public static event Action Click;
 

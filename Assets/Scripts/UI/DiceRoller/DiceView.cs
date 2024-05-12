@@ -23,7 +23,7 @@ public class DiceView : MonoBehaviour
         Animal result = _animals[UnityEngine.Random.Range(0, _animals.Length)];
 
         float time = 0;
-        while (time < 0.3f)
+        while (time < 0.2f)
         {
             var animal = _animals[UnityEngine.Random.Range(0, _animals.Length)].ToString();
             var animalImage = Resources.Load<Sprite>(animal);

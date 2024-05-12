@@ -25,6 +25,19 @@ public class FarmManager : MonoBehaviour
     {
         InitAnimals();
         DiceView.RollDice += OnRollDice;
+        ExchangeButton.Click += OnExchange;
+    }
+
+    private void OnExchange(int amount, Animal animalIn, Animal animalOut)
+    {
+        if (_animals[animalIn] >= amount)
+        {
+            _animals[animalIn] -= amount;
+            FarmUpdate(animalIn, _animals[animalIn]);
+
+            _animals[animalOut] += 1;
+            FarmUpdate(animalOut, _animals[animalOut]);
+        }
     }
 
     private void OnRollDice(Animal animal)
@@ -86,7 +99,6 @@ public class FarmManager : MonoBehaviour
         {
             _animals[Animal.SmallDog] -= 1;
             FarmUpdate?.Invoke(Animal.SmallDog, _animals[Animal.SmallDog]);
-
         }
         else
         {
@@ -116,6 +128,7 @@ public class FarmManager : MonoBehaviour
     private void OnDestroy()
     {
         DiceView.RollDice -= OnRollDice;
+        ExchangeButton.Click -= OnExchange;
     }
 
 }

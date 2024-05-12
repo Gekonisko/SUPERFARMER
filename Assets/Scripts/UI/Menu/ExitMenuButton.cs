@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class ThrowDiceButton : MonoBehaviour
+public class ExitMenuButton : MonoBehaviour
 {
     public static event Action Click;
 

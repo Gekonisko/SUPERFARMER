@@ -1,12 +1,9 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public static event Action<bool> ShowMenu;
-    public static event Action<bool> ShowDiceRoller;
+    public static event Action<GameCanvases> ActiveGameCanvas;
 
     private static GameManager _instance;
     public static GameManager Instance { get { return _instance; } }
@@ -24,26 +21,28 @@ public class GameManager : MonoBehaviour
             _instance = this;
         }
 
-        ThrowDiceButton.Click += OnThrowDice;
+        ThrowDiceMenuButton.Click += OnThrowDice;
         BackToMenuButton.Click += OnShowMenu;
+        ExchangeMenuButton.Click += OnExchange;
     }
 
-    private void OnThrowDice()
-    {
-        ShowMenu?.Invoke(false);
-        ShowDiceRoller?.Invoke(true);
-    }
+    private void OnThrowDice() => ActiveGameCanvas?.Invoke(GameCanvases.DiceRoller);
 
-    private void OnShowMenu()
-    {
-        ShowMenu?.Invoke(true);
-        ShowDiceRoller?.Invoke(false);
-    }
+    private void OnShowMenu() => ActiveGameCanvas?.Invoke(GameCanvases.Menu);
+
+    private void OnExchange() => ActiveGameCanvas?.Invoke(GameCanvases.Exchange);
 
     private void OnDestroy()
     {
-        ThrowDiceButton.Click -= OnThrowDice;
+        ThrowDiceMenuButton.Click -= OnThrowDice;
         BackToMenuButton.Click -= OnShowMenu;
+        ExchangeMenuButton.Click -= OnExchange;
     }
+}
 
+public enum GameCanvases
+{
+    Menu,
+    DiceRoller,
+    Exchange
 }
