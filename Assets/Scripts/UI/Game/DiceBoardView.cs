@@ -11,7 +11,7 @@ public class DiceBoardView : MonoBehaviour
 
     private void Awake()
     {
-        ThrowDiceEvent.Event += OnThrowDice;
+        ThrowDiceButton.Click += OnThrowDice;
     }
 
     private void OnThrowDice()
@@ -46,7 +46,7 @@ public class DiceBoardView : MonoBehaviour
             time += _diceRoller.ROLL_TIME_INCREMENT;
         }
 
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.1f);
 
         var result = _diceRoller.RollDices();
         _dices[0].sprite = Resources.Load<Sprite>(result.Item1.ToString());
@@ -55,6 +55,6 @@ public class DiceBoardView : MonoBehaviour
 
     private void OnDestroy()
     {
-        ThrowDiceEvent.Event -= OnThrowDice;
+        ThrowDiceButton.Click -= OnThrowDice;
     }
 }

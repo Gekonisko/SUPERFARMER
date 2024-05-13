@@ -22,6 +22,18 @@ public class BankService : IInitializable, IDisposable
 
     public int GetAnimals(Animal type) => _animals[type];
 
+    public void AddToBank(Animal type, int count)
+    {
+        _animals[type] += count;
+        BankUpdate?.Invoke(type);
+    }
+
+    public void RemoveFromBank(Animal type, int count)
+    {
+        _animals[type] -= count;
+        BankUpdate?.Invoke(type);
+    }
+
     public void Reset() => _animals = new Dictionary<Animal, int>(_backupAnimals);
 
     public void Initialize()

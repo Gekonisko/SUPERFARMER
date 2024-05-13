@@ -23,7 +23,7 @@ namespace Players
         {
             text = GetComponentInChildren<TextMeshProUGUI>();
 
-            var player = _gameService.GetPlayer(_playerId - 1);
+            var player = _gameService.GetPlayer(_playerId);
             text.text = player.animals[_type].ToString();
         }
 
@@ -31,7 +31,7 @@ namespace Players
         {
             if (playerId == _playerId && type == _type)
             {
-                var player = _gameService.GetPlayer(_playerId - 1);
+                var player = _gameService.GetPlayer(_playerId);
                 text.text = player.animals[_type].ToString();
             }
         }

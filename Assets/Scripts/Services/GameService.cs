@@ -8,8 +8,13 @@ public class GameService : IInitializable, IDisposable
 {
     public event Action<GameCanvases> ActiveGameCanvas;
     public event Action<int, Animal> PlayerFarmUpdate;
+    public event Action<int> ChangePlayerTurn;
+
     public readonly int MAX_Players = 4;
     public readonly int MIN_Players = 2;
+
+    private int _playerTurn = 0;
+    public int PlayerTurn => _playerTurn;
 
     [Inject]
     private BankService _bankService;
@@ -20,8 +25,7 @@ public class GameService : IInitializable, IDisposable
 
     public void Initialize()
     {
-        ThrowDiceEvent.Event += OnThrowDice;
-        BackToMenuButton.Click += OnShowMenu;
+        EndTurnEvent.Event += OnEndTour;
         ExchangeMenuButton.Click += OnExchange;
         ChangeSceneButton.Click += OnChangeSceneButton;
 
@@ -38,9 +42,35 @@ public class GameService : IInitializable, IDisposable
 
     public Player GetPlayer(int number) => players[number];
 
-    private void OnThrowDice() => ActiveGameCanvas?.Invoke(GameCanvases.DiceRoller);
+    public void AddToPlayerFarm(Animal type, int count) => AddToPlayerFarm(_playerTurn, type, count);
 
-    private void OnShowMenu() => ActiveGameCanvas?.Invoke(GameCanvases.Menu);
+    public void AddToPlayerFarm(int playerId, Animal type, int count)
+    {
+        players[playerId].animals[type] += count;
+        PlayerFarmUpdate(playerId, type);
+    }
+
+    public void RemoveFromPlayerFarm(Animal type, int count) => RemoveFromPlayerFarm(_playerTurn, type, count);
+
+    public void RemoveFromPlayerFarm(int playerId, Animal type, int count)
+    {
+        players[playerId].animals[type] -= count;
+        PlayerFarmUpdate(playerId, type);
+    }
+
+    public void SetPlayerFarm(Animal type, int count) => SetPlayerFarm(_playerTurn, type, count);
+
+    public void SetPlayerFarm(int playerId, Animal type, int count)
+    {
+        players[playerId].animals[type] = count;
+        PlayerFarmUpdate(playerId, type);
+    }
+
+    private void OnEndTour()
+    {
+        _playerTurn = (_playerTurn + 1) % players.Count;
+        ChangePlayerTurn?.Invoke(_playerTurn);
+    }
 
     private void OnExchange() => ActiveGameCanvas?.Invoke(GameCanvases.Exchange);
 
@@ -59,10 +89,9 @@ public class GameService : IInitializable, IDisposable
 
     public void Dispose()
     {
-        ThrowDiceEvent.Event -= OnThrowDice;
-        BackToMenuButton.Click -= OnShowMenu;
         ExchangeMenuButton.Click -= OnExchange;
         ChangeSceneButton.Click -= OnChangeSceneButton;
+        EndTurnEvent.Event -= OnEndTour;
     }
 }
 

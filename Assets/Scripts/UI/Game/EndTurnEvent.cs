@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class ThrowDiceEvent : MonoBehaviour
+public class EndTurnEvent : MonoBehaviour
 {
     public static event Action Event;
 
