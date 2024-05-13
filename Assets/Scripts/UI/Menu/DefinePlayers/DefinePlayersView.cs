@@ -17,7 +17,7 @@ namespace DefinePlayers
 
         private void Awake()
         {
-            PlayButton.Click += OnPlayButton;
+            DefinePlayers.PlayButton.Click += OnPlayButton;
         }
 
         private void Start()
@@ -29,16 +29,16 @@ namespace DefinePlayers
         public void OnPlayButton()
         {
             AddPlayers();
-            SceneManager.LoadScene("Game");
+            ChangeSceneButton.OnClick("Game");
         }
 
         private void AddPlayers()
         {
-            foreach (var player in players)
+            for (int i = 0; i < playersNumber; i++)
             {
-                if (player.activeInHierarchy)
+                if (players[i].activeInHierarchy)
                 {
-                    gameService.AddPlayer(player.GetComponentInChildren<TMP_InputField>().text);
+                    gameService.AddPlayer(players[i].GetComponentInChildren<TMP_InputField>().text);
                 }
             }
         }
@@ -78,7 +78,7 @@ namespace DefinePlayers
 
         private void OnDestroy()
         {
-            PlayButton.Click -= OnPlayButton;
+            DefinePlayers.PlayButton.Click -= OnPlayButton;
         }
     }
 }
