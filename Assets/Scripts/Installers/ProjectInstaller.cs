@@ -6,5 +6,6 @@ public class ProjectInstaller : MonoInstaller
     {
         Container.BindInterfacesAndSelfTo<GameService>().AsSingle();
         Container.BindInterfacesAndSelfTo<BankService>().AsSingle();
+        Container.BindInterfacesAndSelfTo<DiceRollerService>().AsSingle();
     }
 }

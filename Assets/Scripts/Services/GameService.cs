@@ -20,7 +20,7 @@ public class GameService : IInitializable, IDisposable
 
     public void Initialize()
     {
-        ThrowDiceMenuButton.Click += OnThrowDice;
+        ThrowDiceEvent.Event += OnThrowDice;
         BackToMenuButton.Click += OnShowMenu;
         ExchangeMenuButton.Click += OnExchange;
         ChangeSceneButton.Click += OnChangeSceneButton;
@@ -59,7 +59,7 @@ public class GameService : IInitializable, IDisposable
 
     public void Dispose()
     {
-        ThrowDiceMenuButton.Click -= OnThrowDice;
+        ThrowDiceEvent.Event -= OnThrowDice;
         BackToMenuButton.Click -= OnShowMenu;
         ExchangeMenuButton.Click -= OnExchange;
         ChangeSceneButton.Click -= OnChangeSceneButton;

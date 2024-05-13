@@ -27,7 +27,6 @@ public class FarmManager : MonoBehaviour
     private void Awake()
     {
         InitAnimals();
-        DiceView.RollDice += OnRollDice;
         ExchangeButton.Click += OnExchange;
     }
 
@@ -130,7 +129,6 @@ public class FarmManager : MonoBehaviour
 
     private void OnDestroy()
     {
-        DiceView.RollDice -= OnRollDice;
         ExchangeButton.Click -= OnExchange;
     }
 
