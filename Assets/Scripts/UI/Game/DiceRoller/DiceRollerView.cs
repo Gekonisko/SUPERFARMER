@@ -1,16 +1,19 @@
 using UnityEngine;
 using UnityEngine.UI;
+using Zenject;
 
 public class DiceRollerView : MonoBehaviour
 {
     [SerializeField] private GameObject _dices;
     [SerializeField] private Button _nextButton;
+    [Inject]
+    private GameService gameService;
 
     private int _rollDiceCounter = 0;
 
     private void Awake()
     {
-        GameManager.ActiveGameCanvas += OnChangeGameCanvas;
+        gameService.ActiveGameCanvas += OnChangeGameCanvas;
         DiceView.RollDice += OnRollDice;
     }
 
@@ -40,7 +43,7 @@ public class DiceRollerView : MonoBehaviour
 
     private void OnDestroy()
     {
-        GameManager.ActiveGameCanvas -= OnChangeGameCanvas;
+        gameService.ActiveGameCanvas -= OnChangeGameCanvas;
         DiceView.RollDice -= OnRollDice;
     }
 

@@ -11,7 +11,6 @@ namespace Menu
         public void OnClick()
         {
             Click?.Invoke();
-            SceneManager.LoadScene("Game");
         }
     }
 }

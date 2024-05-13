@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using Zenject;
 
 public class FarmManager : MonoBehaviour
 {
@@ -9,6 +10,8 @@ public class FarmManager : MonoBehaviour
 
     private int _rollDiceCount = 0;
     private Animal _diceI, _diceII;
+    [Inject]
+    private GameService gameService;
 
     private void InitAnimals()
     {
@@ -47,7 +50,7 @@ public class FarmManager : MonoBehaviour
         if (_rollDiceCount == 1)
             _diceI = animal;
 
-        if (_rollDiceCount == GameManager.Instance.dices)
+        if (_rollDiceCount == gameService.dices)
         {
             _diceII = animal;
             _rollDiceCount = 0;

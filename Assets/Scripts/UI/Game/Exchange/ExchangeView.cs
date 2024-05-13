@@ -1,12 +1,15 @@
 using UnityEngine;
+using Zenject;
 
 public class ExchangeView : MonoBehaviour
 {
     [SerializeField] private GameObject menu;
+    [Inject]
+    private GameService gameService;
 
     private void Awake()
     {
-        GameManager.ActiveGameCanvas += OnChangeGameCanvas;
+        gameService.ActiveGameCanvas += OnChangeGameCanvas;
     }
 
     private void OnChangeGameCanvas(GameCanvases canvas)
@@ -16,6 +19,6 @@ public class ExchangeView : MonoBehaviour
 
     private void OnDestroy()
     {
-        GameManager.ActiveGameCanvas -= OnChangeGameCanvas;
+        gameService.ActiveGameCanvas -= OnChangeGameCanvas;
     }
 }
