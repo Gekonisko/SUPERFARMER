@@ -20,8 +20,11 @@ public class ExchangerAnimalView : MonoBehaviour
     {
         Menu.ExchangeButton.Click += OnClickMenuExchangeButton;
         Exchange.ExchangerButton.Click += OnClickExchangerButton;
+        Exchange.ExchangeButton.Click += OnClickExchangeButton;
         input.onValueChanged.AddListener(OnInputValueChanged);
     }
+
+    private void OnClickExchangeButton() => UpdateView();
 
     private void OnInputValueChanged(string str)
     {
@@ -61,6 +64,7 @@ public class ExchangerAnimalView : MonoBehaviour
     {
         Menu.ExchangeButton.Click -= OnClickMenuExchangeButton;
         Exchange.ExchangerButton.Click -= OnClickExchangerButton;
+        Exchange.ExchangeButton.Click -= OnClickExchangeButton;
         input.onValueChanged.RemoveListener(OnInputValueChanged);
     }
 }

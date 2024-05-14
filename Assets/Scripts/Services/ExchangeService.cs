@@ -6,6 +6,14 @@ public class ExchangeService : IInitializable, IDisposable
 {
     public event Action ExchangeUpdate;
 
+    private Exchanger exchanger;
+    private Exchanger Exchanger => exchanger;
+
+    [Inject]
+    private GameService gameService;
+    [Inject]
+    private BankService bankService;
+
     public readonly Dictionary<Animal, int> multiplier = new()
     {
         { Animal.Rabbit, 1 },
@@ -42,6 +50,37 @@ public class ExchangeService : IInitializable, IDisposable
     public void Initialize()
     {
         Menu.ExchangeButton.Click += OnClickMenuExchangeButton;
+        Exchange.ExchangeButton.Click += OnClickExchangeButton;
+        Exchange.ExchangerButton.Click += OnClickExchangerButton;
+        ClearExchange();
+        ExchangeUpdate?.Invoke();
+    }
+
+    public void ApplyExchange()
+    {
+        List<Animal> keys = new List<Animal>(playerOffer.Keys);
+        foreach (var key in keys)
+        {
+            if (playerOffer[key] > 0)
+                gameService.RemoveFromPlayerFarm(key, playerOffer[key]);
+            if (exchangerOffer[key] > 0)
+            {
+                if (exchanger == Exchanger.Bank)
+                    bankService.RemoveFromBank(key, exchangerOffer[key]);
+                else
+                    gameService.RemoveFromPlayerFarm((int)exchanger, key, exchangerOffer[key]);
+            }
+
+            if (exchangerOffer[key] > 0)
+                gameService.AddToPlayerFarm(key, exchangerOffer[key]);
+            if (playerOffer[key] > 0)
+            {
+                if (exchanger == Exchanger.Bank)
+                    bankService.AddToBank(key, playerOffer[key]);
+                else
+                    gameService.AddToPlayerFarm((int)exchanger, key, playerOffer[key]);
+            }
+        }
         ClearExchange();
         ExchangeUpdate?.Invoke();
     }
@@ -90,8 +129,17 @@ public class ExchangeService : IInitializable, IDisposable
         ExchangeUpdate?.Invoke();
     }
 
+    private void OnClickExchangerButton(Exchanger exchanger) => this.exchanger = exchanger;
+
+    private void OnClickExchangeButton()
+    {
+        ApplyExchange();
+    }
+
     public void Dispose()
     {
         Menu.ExchangeButton.Click -= OnClickMenuExchangeButton;
+        Exchange.ExchangeButton.Click -= OnClickExchangeButton;
+        Exchange.ExchangerButton.Click -= OnClickExchangerButton;
     }
 }

@@ -19,9 +19,12 @@ namespace Exchange
 
         private void Awake()
         {
-            ExchangeButton.Click += OnClickExchangeButton;
+            Menu.ExchangeButton.Click += OnClickMenuExchangeButton;
+            Exchange.ExchangeButton.Click += OnClickExchangeButton;
             input.onValueChanged.AddListener(OnInputValueChanged);
         }
+
+        private void OnClickExchangeButton() => UpdateView();
 
         private void OnInputValueChanged(string str)
         {
@@ -37,16 +40,17 @@ namespace Exchange
             }
         }
 
-        private void OnClickExchangeButton() => UpdateView();
+        private void OnClickMenuExchangeButton() => UpdateView();
 
         private void UpdateView()
         {
             text.text = gameService.GetPlayer(gameService.PlayerTurn).animals[type].ToString();
+            input.text = "0";
         }
 
         private void OnDestroy()
         {
-            ExchangeButton.Click -= OnClickExchangeButton;
+            Menu.ExchangeButton.Click -= OnClickMenuExchangeButton;
             input.onValueChanged.RemoveListener(OnInputValueChanged);
 
         }
