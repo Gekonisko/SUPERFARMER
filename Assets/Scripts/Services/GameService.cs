@@ -25,8 +25,7 @@ public class GameService : IInitializable, IDisposable
 
     public void Initialize()
     {
-        EndTurnEvent.Event += OnEndTour;
-        ExchangeMenuButton.Click += OnExchange;
+        Menu.EndTurnButton.Event += OnEndTurn;
         ChangeSceneButton.Click += OnChangeSceneButton;
 
         if (SceneManager.GetActiveScene().name == GameScenes.Game.ToString())
@@ -66,13 +65,11 @@ public class GameService : IInitializable, IDisposable
         PlayerFarmUpdate(playerId, type);
     }
 
-    private void OnEndTour()
+    private void OnEndTurn()
     {
         _playerTurn = (_playerTurn + 1) % players.Count;
         ChangePlayerTurn?.Invoke(_playerTurn);
     }
-
-    private void OnExchange() => ActiveGameCanvas?.Invoke(GameCanvases.Exchange);
 
     private void OnChangeSceneButton(string name)
     {
@@ -89,9 +86,8 @@ public class GameService : IInitializable, IDisposable
 
     public void Dispose()
     {
-        ExchangeMenuButton.Click -= OnExchange;
         ChangeSceneButton.Click -= OnChangeSceneButton;
-        EndTurnEvent.Event -= OnEndTour;
+        Menu.EndTurnButton.Event -= OnEndTurn;
     }
 }
 

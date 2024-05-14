@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
 
-namespace Exchange
+namespace Menu
 {
     public class ExchangeButton : MonoBehaviour
     {
@@ -31,3 +31,4 @@ namespace Exchange
         }
     }
 }
+

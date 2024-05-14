@@ -8,5 +8,6 @@ public class ProjectInstaller : MonoInstaller
         Container.BindInterfacesAndSelfTo<BankService>().AsSingle();
         Container.BindInterfacesAndSelfTo<DiceRollerService>().AsSingle();
         Container.BindInterfacesAndSelfTo<FarmService>().AsSingle();
+        Container.BindInterfacesAndSelfTo<ExchangeService>().AsSingle();
     }
 }

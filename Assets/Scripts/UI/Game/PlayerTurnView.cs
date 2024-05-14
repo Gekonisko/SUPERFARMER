@@ -2,7 +2,7 @@ using TMPro;
 using UnityEngine;
 using Zenject;
 
-public class PlayerTourView : MonoBehaviour
+public class PlayerTurnView : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI text;
 

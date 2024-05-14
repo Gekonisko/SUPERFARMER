@@ -11,7 +11,7 @@ public class DiceBoardView : MonoBehaviour
 
     private void Awake()
     {
-        ThrowDiceButton.Click += OnThrowDice;
+        Menu.ThrowDiceButton.Click += OnThrowDice;
     }
 
     private void OnThrowDice()
@@ -55,6 +55,6 @@ public class DiceBoardView : MonoBehaviour
 
     private void OnDestroy()
     {
-        ThrowDiceButton.Click -= OnThrowDice;
+        Menu.ThrowDiceButton.Click -= OnThrowDice;
     }
 }

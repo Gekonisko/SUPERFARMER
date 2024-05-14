@@ -1,8 +1,7 @@
 using System;
 using UnityEngine;
-using Zenject;
 
-public class DiceRollerService : IInitializable, IDisposable
+public class DiceRollerService
 {
     public event Action<Animal, Animal> DiceRoll;
     public readonly float ROLL_TIME = 0.3f;
@@ -24,13 +23,5 @@ public class DiceRollerService : IInitializable, IDisposable
         DiceRoll?.Invoke(diceI, diceII);
 
         return (diceI, diceII);
-    }
-
-    public void Initialize()
-    {
-    }
-
-    public void Dispose()
-    {
     }
 }

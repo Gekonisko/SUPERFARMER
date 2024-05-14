@@ -3,9 +3,9 @@ using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
 
-namespace Exchange
+namespace Menu
 {
-    public class ExchangeButton : MonoBehaviour
+    public class ThrowDiceButton : MonoBehaviour
     {
         public static event Action Click;
         public static void Invoke() => Click?.Invoke();
@@ -31,3 +31,5 @@ namespace Exchange
         }
     }
 }
+
+
