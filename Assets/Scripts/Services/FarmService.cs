@@ -24,7 +24,7 @@ public class FarmService : IInitializable, IDisposable
         var diceIIAnimals = 0;
 
         if (player.animals.ContainsKey(diceI))
-            diceIAnimals = (int)Mathf.Floor((player.animals[diceII] + 1) / 2);
+            diceIAnimals = (int)Mathf.Floor((player.animals[diceI] + 1) / 2);
         if (player.animals.ContainsKey(diceII))
         {
             if (player.animals.ContainsKey(diceI) && diceI == diceII)
@@ -38,18 +38,20 @@ public class FarmService : IInitializable, IDisposable
             }
         }
         if (diceIAnimals > 0)
-        {
-            gameService.AddToPlayerFarm(diceI, diceIAnimals);
-            bankService.RemoveFromBank(diceI, diceIAnimals);
-        }
+            AddToPlayerFarm(diceI, diceIAnimals);
         if (diceIIAnimals > 0 && diceI != diceII)
-        {
-            gameService.AddToPlayerFarm(diceII, diceIIAnimals);
-            bankService.RemoveFromBank(diceII, diceIIAnimals);
-        }
+            AddToPlayerFarm(diceII, diceIIAnimals);
 
         CheckForPredator(diceI, ref player);
         CheckForPredator(diceII, ref player);
+    }
+
+    private void AddToPlayerFarm(Animal type, int count)
+    {
+        var animals = bankService.GetAnimals(type) > count ? count : bankService.GetAnimals(type);
+
+        gameService.AddToPlayerFarm(type, animals);
+        bankService.RemoveFromBank(type, animals);
     }
 
     private void CheckForPredator(Animal dice, ref Player player)
@@ -69,7 +71,8 @@ public class FarmService : IInitializable, IDisposable
         }
         else
         {
-            gameService.SetPlayerFarm(Animal.Sheep, 1);
+            bankService.AddToBank(Animal.Rabbit, player.animals[Animal.Rabbit] - 1);
+            gameService.SetPlayerFarm(Animal.Rabbit, 1);
         }
     }
 
@@ -82,8 +85,11 @@ public class FarmService : IInitializable, IDisposable
         }
         else
         {
+            bankService.AddToBank(Animal.Sheep, player.animals[Animal.Sheep]);
             gameService.SetPlayerFarm(Animal.Sheep, 0);
+            bankService.AddToBank(Animal.Pig, player.animals[Animal.Pig]);
             gameService.SetPlayerFarm(Animal.Pig, 0);
+            bankService.AddToBank(Animal.Cow, player.animals[Animal.Cow]);
             gameService.SetPlayerFarm(Animal.Cow, 0);
         }
     }
