@@ -19,6 +19,14 @@ namespace Exchange
             Click += OnClick;
         }
 
+        private void Start()
+        {
+            if (isSelected)
+            {
+                Click.Invoke(type);
+            }
+        }
+
         private void OnClick(Exchanger type)
         {
             image.color = this.type == type ? selectColor : deselectColor;

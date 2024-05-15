@@ -28,15 +28,30 @@ public class ExchangerAnimalView : MonoBehaviour
 
     private void OnInputValueChanged(string str)
     {
+        if (str.Length == 0) return;
+
         if (int.TryParse(str, out int val))
         {
-            if (val <= 0) return;
+            if (val <= 0)
+            {
+                input.text = "0";
+                exchangeService.SetExchangerOffer(type, 0);
+                return;
+            }
+
+            var animals = GetAnimalNumber();
+            if (val > animals)
+            {
+                val = animals;
+                input.text = val.ToString();
+            }
 
             exchangeService.SetExchangerOffer(type, val);
         }
         else
         {
             exchangeService.SetExchangerOffer(type, 0);
+            input.text = "0";
         }
     }
 
@@ -51,6 +66,7 @@ public class ExchangerAnimalView : MonoBehaviour
     private void UpdateView()
     {
         text.text = GetAnimalNumber().ToString();
+        input.text = "0";
     }
 
     private int GetAnimalNumber()

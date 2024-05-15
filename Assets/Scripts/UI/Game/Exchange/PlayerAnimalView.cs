@@ -28,15 +28,30 @@ namespace Exchange
 
         private void OnInputValueChanged(string str)
         {
+            if (str.Length == 0) return;
+
             if (int.TryParse(str, out int val))
             {
-                if (val <= 0) return;
+                if (val <= 0)
+                {
+                    input.text = "0";
+                    exchangeService.SetExchangerOffer(type, 0);
+                    return;
+                }
+
+                var animals = gameService.GetPlayer(gameService.PlayerTurn).animals[type];
+                if (val > animals)
+                {
+                    val = animals;
+                    input.text = val.ToString();
+                }
 
                 exchangeService.SetPlayerOffer(type, val);
             }
             else
             {
                 exchangeService.SetExchangerOffer(type, 0);
+                input.text = "0";
             }
         }
 
